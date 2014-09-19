@@ -2,33 +2,60 @@
 
 @section('content')
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more »</a></p>
-      </div>
-    </div>
-
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div>
-      </div>
+        <h1>HireMe</h1>
+        <p>
+            Proyecto que estamos construyendo con Laravel para el curso profesional
+            de PHP y Laravel de Mejorando.la:
+            <a href="https://mejorando.la/cursos/php-laravel">
+                https://mejorando.la/cursos/php-laravel
+            </a>
+        </p>
+        <p><a class="btn btn-primary btn-lg" role="button">Postúlate &raquo;</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Últimos candidatos</h1>
+
+    @foreach ($latest_candidates as $category)
+    <h2>{{ $category->name }}</h2>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo de trabajo</th>
+            <th>Descripción</th>
+            <th>Ver</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{-- Ciclo para listar los candidadtos  --}}
+        @foreach ($category->candidates as $candidate)
+        <tr>
+            <td>{{ $candidate->user->full_name }}</td>
+            <td>{{ $candidate->job_type_title }}</td>
+            <td>{{ $candidate->description }}</td>
+            <td width="50">
+                <a href="{{ route('candidate', [$candidate->slug, $candidate->id]) }}" class="btn btn-info">
+                    Ver
+                </a>
+            </td>
+        </tr>
+        @endforeach
+        </tbody>
+    </table>
+    <p>
+        {{-- Listar las categorías y pasar como link a la página de categorías --}}
+        <a href="{{ route('category', [$category->slug, $category->id]) }}">
+            Ver todos en {{ $category->name }}
+        </a>
+    </p>
+    @endforeach
+
+</div> <!-- /container -->
 
 @stop

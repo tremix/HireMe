@@ -1,5 +1,8 @@
 <?php
 
+use HireMe\Repositories\CandidateRepo;
+
+
 class HomeController extends BaseController {
 
 	/*
@@ -15,9 +18,21 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function index()
-	{
-		return View::make('home');
-	}
+    protected $candidateRepo;
+
+    //solicitar repo para devolver los datos
+    public function __construct(CandidateRepo $candidateRepo)
+    {
+        $this->candidateRepo = $candidateRepo;
+    }
+    //
+    public function index()
+    {
+        //obtener los ultimos candidatos registrados en el sistema.
+        $latest_candidates = $this->candidateRepo->findLatest();
+
+        //Solicita a latest_candidates
+        return View::make('home', compact('latest_candidates'));
+    }
 
 }
