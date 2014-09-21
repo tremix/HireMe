@@ -46,3 +46,9 @@ Route::get('candidates/{slug}/{id}', ['as' => 'category', 'uses' => 'CandidatesC
 
 //Ruta para un candidato: duilio-palacios/1
 Route::get('{slug}/{id}', ['as' => 'candidate', 'uses' => 'CandidatesController@show']);
+
+//accedo a datos de la web
+Route::get('sign-up', ['as' => 'sign_up', 'uses' => 'UsersController@signUp']);
+
+//Envio de datos de formulario
+Route::post('sign-up', ['as' => 'register', 'uses' => 'UsersController@register']);

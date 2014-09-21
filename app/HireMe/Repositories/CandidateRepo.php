@@ -11,6 +11,7 @@ namespace HireMe\Repositories;
 use HireMe\Entities\Candidate;
 //Se integra para obtener Candidatos ordenados por categoría
 use HireMe\Entities\Category;
+use HireMe\Entities\User;
 
 class CandidateRepo extends BaseRepo{
 
@@ -41,5 +42,13 @@ class CandidateRepo extends BaseRepo{
          * Separacion de la consulta de los candidatos para no traer todos los registros
          * solo la cantidad solicitada(=10) según la funcion anónima y de forma descendente
          * */
+    }
+
+    public function newCandidate()
+    {
+        //Candidato sera un usuario
+        $user = new User() ;
+        $user->type = 'candidate';
+        return $user;
     }
 } 
