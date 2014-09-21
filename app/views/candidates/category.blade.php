@@ -19,6 +19,7 @@
             <td>{{ $candidate->job_type }}</td>
             <td>{{ $candidate->description }}</td>
             <td with="50">
+                {{--Ruta,definicion_de_parametros--}}
                 <a href="{{ route('candidate', [$candidate->slug, $candidate->id]) }}" class="btn btn-info">
                     Ver
                 </a>

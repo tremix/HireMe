@@ -5,9 +5,13 @@ class Category extends \Eloquent {
 
     public function candidates()
     {
+        /*definición de la relación de categorias con candidates
+         *
+         * Pasando el namespace como parámetro
+         */
         return $this->hasMany('HireMe\Entities\Candidate');
     }
-    //Deinición sobre la paginación de candidatos
+    //Definición sobre la paginación de candidatos
     public function getPaginateCandidatesAttribute()
     {
         //traer candidatos donde categoría es = id de la categoría

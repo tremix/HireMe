@@ -23,6 +23,7 @@ class HomeController extends BaseController {
     //solicitar repo para devolver los datos
     public function __construct(CandidateRepo $candidateRepo)
     {
+        //asignamos a la variable
         $this->candidateRepo = $candidateRepo;
     }
     //

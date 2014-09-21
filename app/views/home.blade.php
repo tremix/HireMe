@@ -19,7 +19,7 @@
 
 <div class="container">
     <h1>Últimos candidatos</h1>
-
+    {{--Ciclo de las ultimos de la  categorias--}}
     @foreach ($latest_candidates as $category)
     <h2>{{ $category->name }}</h2>
 
@@ -33,7 +33,7 @@
         </tr>
         </thead>
         <tbody>
-        {{-- Ciclo para listar los candidadtos  --}}
+        {{-- Ciclo para listar los candidadtos de la categoria  --}}
         @foreach ($category->candidates as $candidate)
         <tr>
             <td>{{ $candidate->user->full_name }}</td>

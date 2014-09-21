@@ -16,6 +16,7 @@ class CandidateRepo extends BaseRepo{
 
     public function getModel()
     {
+        //regresa un nuevo candidato definiendo que esta dentro de entities\candidate
         return new Candidate;
     }
 
@@ -24,7 +25,7 @@ class CandidateRepo extends BaseRepo{
     {
     /*  Traer el listado de Categorias con Candidatos incluyendo
         que c/candidato venga con su respectivo Usuario.
-        El cual realizá la carga ambiciosa de Eloquent
+        El cual realizá la carga ambiciosa de Eloquent (Eager Loading)
         with(candidates, candidates.user).
         Se utiliza el método Get para traer los registros
     */
